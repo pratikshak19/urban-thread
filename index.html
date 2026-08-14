@@ -129,7 +129,7 @@ async function cloudUpdateProduct(id,data){
   await updateDoc(doc(cloudDB,CLOUD_PRODUCTS_COLLECTION,String(id)),data);
 }
 
-const WHATSAPP_NUMBER="919284283849"; // CHANGE THIS to your WhatsApp number, e.g. 919876543210
+const WHATSAPP_NUMBER="919075219360"; // CHANGE THIS to your WhatsApp number, e.g. 919876543210
 const grid=document.getElementById("productGrid"),backdrop=document.getElementById("modalBackdrop"),modal=document.getElementById("modal");
 function money(n){return "₹"+n.toLocaleString("en-IN")}
 function save(){if(!cloudMode)localStorage.setItem("ut_products",JSON.stringify(products));localStorage.setItem("ut_cart",JSON.stringify(cart));updateCartCount()}
