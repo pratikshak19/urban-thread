@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Urban Threads | Fashion & Sports</title>
+<style>
+*{box-sizing:border-box} :root{--bg:#fffdf9;--surface:#fff;--ink:#202124;--muted:#747474;--line:#ece8e2;--accent:#d9775f;--green:#a9c9b5;--yellow:#f4d58b;--shadow:0 18px 50px rgba(38,32,24,.08)}
+body.dark{--bg:#171817;--surface:#222422;--ink:#f7f5f0;--muted:#b5b5b0;--line:#393b38;--shadow:0 18px 50px rgba(0,0,0,.25)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Arial,Helvetica,sans-serif;transition:.25s}
+a{text-decoration:none;color:inherit} button{font:inherit;border:0;cursor:pointer;color:inherit}
+.site-header{height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 5%;border-bottom:1px solid var(--line);position:sticky;top:0;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(14px);z-index:10}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700}.brand-mark{width:35px;height:35px;border-radius:11px;display:grid;place-items:center;background:var(--ink);color:var(--bg);font-size:12px}
+.desktop-nav{display:flex;gap:30px;color:var(--muted);font-size:14px}.desktop-nav a:hover{color:var(--ink)}
+.header-actions{display:flex;gap:7px;align-items:center}.icon-btn,.profile-btn,.menu-btn{background:transparent;padding:9px;border-radius:10px}.icon-btn:hover,.profile-btn:hover,.menu-btn:hover{background:var(--line)}.profile-btn{font-size:14px}.menu-btn{display:none;font-size:20px}.badge{background:var(--accent);color:#fff;border-radius:50%;font-size:10px;padding:2px 5px;position:relative;top:-9px;left:-4px}
+.mobile-menu{display:none;padding:18px 5%;border-bottom:1px solid var(--line);gap:18px}.mobile-menu.open{display:flex;flex-direction:column}
+.hero{max-width:1200px;margin:auto;padding:90px 5% 80px;display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}.eyebrow{font-size:11px;letter-spacing:2px;color:var(--accent);font-weight:700}
+.hero h1{font-family:Georgia,serif;font-size:clamp(48px,6vw,82px);line-height:.98;letter-spacing:-3px;margin:18px 0}.hero h1 em,.about-card h2 em{color:var(--accent);font-style:normal}
+.hero p{font-size:17px;line-height:1.7;color:var(--muted);max-width:530px}.hero-actions{display:flex;align-items:center;gap:24px;margin:30px 0}.btn{display:inline-flex;padding:14px 20px;border-radius:12px;font-weight:700;font-size:14px}.btn-primary{background:var(--ink);color:var(--bg)}.btn-dark{background:#1f2b24;color:#fff}.text-link{font-weight:700;font-size:14px;border-bottom:1px solid var(--ink);padding-bottom:4px}.trust-row{display:flex;gap:18px;flex-wrap:wrap;font-size:12px;color:var(--muted)}
+.hero-art{min-height:440px;position:relative;display:grid;place-items:center}.art-card{width:min(430px,85%);height:420px;border-radius:34px;background:linear-gradient(145deg,#f4c7a9,#f6e4cc);position:relative;overflow:hidden;box-shadow:var(--shadow)}.art-card:before{content:'';position:absolute;width:270px;height:430px;background:#202a25;transform:rotate(24deg);left:120px;top:30px;border-radius:100px 100px 20px 20px;opacity:.94}.art-circle{position:absolute;width:170px;height:170px;border-radius:50%;background:var(--yellow);right:-45px;top:-45px}.art-label{position:absolute;z-index:2;left:28px;bottom:28px;font-size:12px;letter-spacing:2px;line-height:1.6}.art-label strong{font-size:25px;letter-spacing:0}.floating-card{position:absolute;right:0;bottom:35px;background:var(--surface);padding:18px 20px;border-radius:18px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:6px}.floating-card span,.floating-card a{font-size:11px;color:var(--muted)}.floating-card strong{font-family:Georgia,serif;font-size:22px}
+.category-strip,.shop-section,.about-section{max-width:1200px;margin:auto;padding:70px 5%}.section-heading{margin-bottom:28px}.section-heading h2{font-family:Georgia,serif;font-size:40px;margin:10px 0}.category-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.category-card{height:210px;border-radius:22px;padding:22px;text-align:left;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden}.category-card:before{content:'';position:absolute;width:180px;height:180px;border-radius:50%;right:-40px;top:-40px;background:rgba(255,255,255,.25)}.category-card>*{position:relative}.category-card span{font-size:11px;letter-spacing:1.5px;font-weight:700}.category-card strong{font-family:Georgia,serif;font-size:22px;margin:7px 0}.category-card small{font-size:12px}.category-men{background:#d8e3dc}.category-sport{background:#dce6ef}.category-saree{background:#f1d9d0}.category-shoes{background:#eee2c6}
+.row-heading{display:flex;justify-content:space-between;align-items:end;gap:20px}.filter-row{display:flex;gap:6px;flex-wrap:wrap}.filter{background:transparent;border:1px solid var(--line);padding:8px 13px;border-radius:20px;font-size:12px}.filter.active,.filter:hover{background:var(--ink);color:var(--bg)}
+.product-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.product-card{background:var(--surface);border:1px solid var(--line);border-radius:18px;overflow:hidden;transition:.2s}.product-card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}.product-image{height:235px;display:grid;place-items:center;position:relative}.product-image span{font-size:52px}.product-tag{position:absolute;top:12px;left:12px;background:var(--surface);padding:5px 8px;border-radius:8px;font-size:10px}.product-info{padding:15px}.product-info h3{font-size:15px;margin:0 0 6px}.product-info p{font-size:12px;color:var(--muted);margin:0 0 10px}.price{font-weight:700}.old-price{color:var(--muted);text-decoration:line-through;font-size:12px;margin-left:6px}.product-actions{display:flex;gap:7px;margin-top:12px}.small-btn{flex:1;padding:9px;border-radius:9px;background:var(--line);font-size:12px}.small-btn.primary{background:var(--ink);color:var(--bg)}
+.offer-banner{max-width:1100px;margin:40px auto 80px;padding:48px;border-radius:28px;background:linear-gradient(120deg,#d8e3dc,#f3d8c8);display:flex;justify-content:space-between;align-items:center;gap:25px}.offer-banner h2{font-family:Georgia,serif;font-size:38px;margin:10px 0}.offer-banner p{color:#5d625d}
+.about-section{padding-top:10px;padding-bottom:90px}.about-card{padding:50px;border:1px solid var(--line);border-radius:28px;background:var(--surface)}.about-card h2{font-family:Georgia,serif;font-size:44px;margin:15px 0}.about-card p{max-width:650px;color:var(--muted);line-height:1.7}.about-points{display:flex;gap:35px;margin-top:35px;flex-wrap:wrap;color:var(--accent);font-size:12px}.about-points b{color:var(--ink);margin-left:8px}
+footer{border-top:1px solid var(--line);padding:28px 5%;display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:12px}
+.modal-backdrop{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:20;padding:20px;align-items:center;justify-content:center}.modal-backdrop.open{display:flex}.modal{width:min(560px,100%);max-height:90vh;overflow:auto;background:var(--surface);border-radius:22px;padding:28px;position:relative}.modal h2{font-family:Georgia,serif;font-size:30px;margin:0 0 18px}.close{position:absolute;right:18px;top:15px;background:var(--line);border-radius:50%;width:30px;height:30px}.form{display:grid;gap:12px}.form input,.form select,.form textarea{width:100%;padding:13px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink)}.form label{font-size:12px;color:var(--muted)}.modal-actions{display:flex;gap:10px;margin-top:16px}.cart-item{display:flex;justify-content:space-between;gap:12px;padding:13px 0;border-bottom:1px solid var(--line)}.cart-item small{color:var(--muted)}.empty{color:var(--muted);padding:20px 0}.admin-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.admin-products{margin-top:18px;border-top:1px solid var(--line)}.admin-row{display:flex;justify-content:space-between;gap:10px;padding:12px 0;border-bottom:1px solid var(--line);font-size:13px}.danger{color:#b94a48;background:#f7e3e1}.search-box{display:flex;gap:8px;margin-bottom:18px}.search-box input{flex:1}
+@media(max-width:900px){.desktop-nav{display:none}.menu-btn{display:block}.hero{grid-template-columns:1fr;padding-top:60px}.category-grid,.product-grid{grid-template-columns:repeat(2,1fr)}.row-heading{align-items:flex-start;flex-direction:column}.offer-banner{margin:20px 5% 60px;flex-direction:column;align-items:flex-start}footer{flex-direction:column;gap:12px;align-items:flex-start}}
+@media(max-width:560px){.site-header{padding:0 4%}.profile-btn span{display:none}.hero{padding:45px 5%}.hero h1{font-size:54px}.hero-art{min-height:350px}.art-card{height:330px}.category-grid,.product-grid{grid-template-columns:1fr 1fr;gap:10px}.category-card{height:170px;padding:15px}.category-card strong{font-size:18px}.product-image{height:170px}.product-image span{font-size:40px}.section-heading h2,.offer-banner h2{font-size:32px}.about-card{padding:30px}.about-card h2{font-size:35px}.trust-row{display:none}.floating-card{right:-5px}.admin-grid{grid-template-columns:1fr}.modal{padding:22px}}
+</style>
+</head>
+<body>
+<header class="site-header">
+<a class="brand" href="#"><span class="brand-mark">UT</span><span>Urban Threads</span></a>
+<nav class="desktop-nav"><a href="#shop">Shop</a><a href="#categories">Categories</a><a href="#offers">Offers</a><a href="#about">About</a></nav>
+<div class="header-actions">
+<button class="icon-btn" id="themeToggle">☾</button><button class="icon-btn" id="searchBtn">⌕</button><button class="icon-btn" id="cartBtn">🛒<span class="badge" id="cartCount">0</span></button><button class="profile-btn" id="profileBtn">👤 <span>Account</span></button><button class="icon-btn" id="adminBtn" style="display:none" title="Admin dashboard">⚙️</button><button class="menu-btn" id="menuBtn">☰</button>
+</div>
+</header>
+<div class="mobile-menu" id="mobileMenu"><a href="#shop">Shop</a><a href="#categories">Categories</a><a href="#offers">Offers</a><a href="#about">About</a></div>
+<main>
+<section class="hero"><div class="hero-copy"><span class="eyebrow">NEW SEASON • FRESH STYLES</span><h1>Style that moves<br><em>with you.</em></h1><p>Discover modern menswear, performance sportswear, elegant sarees, and footwear curated for every moment.</p><div class="hero-actions"><a class="btn btn-primary" href="#shop">Shop Collection →</a><a class="text-link" href="#categories">Explore categories</a></div><div class="trust-row"><span>✓ Quality picks</span><span>✓ Easy WhatsApp ordering</span><span>✓ New styles weekly</span></div></div><div class="hero-art"><div class="art-card"><div class="art-label">EVERYDAY<br><strong>ESSENTIALS</strong></div><div class="art-circle"></div></div><div class="floating-card"><span>Trending now</span><strong>Sports<br>Essentials</strong><a href="#shop">Explore →</a></div></div></section>
+<section class="category-strip" id="categories"><div class="section-heading"><span class="eyebrow">SHOP BY CATEGORY</span><h2>Find your everyday style</h2></div><div class="category-grid"><button class="category-card category-men" data-category="Men's Wear"><span>MEN'S WEAR</span><strong>Classic. Modern. You.</strong><small>Explore collection →</small></button><button class="category-card category-sport" data-category="Sportswear"><span>SPORTSWEAR</span><strong>Move with confidence.</strong><small>Explore collection →</small></button><button class="category-card category-saree" data-category="Sarees"><span>SAREES</span><strong>Timeless elegance.</strong><small>Explore collection →</small></button><button class="category-card category-shoes" data-category="Shoes"><span>SHOES</span><strong>Step into style.</strong><small>Explore collection →</small></button></div></section>
+<section class="shop-section" id="shop"><div class="section-heading row-heading"><div><span class="eyebrow">CURATED FOR YOU</span><h2>Featured products</h2></div><div class="filter-row"><button class="filter active" data-filter="All">All</button><button class="filter" data-filter="Men's Wear">Men</button><button class="filter" data-filter="Sportswear">Sports</button><button class="filter" data-filter="Sarees">Sarees</button><button class="filter" data-filter="Shoes">Shoes</button></div></div><div class="product-grid" id="productGrid"></div></section>
+<section class="offer-banner" id="offers"><div><span class="eyebrow">YOUR STYLE, YOUR WAY</span><h2>Fresh looks. Better prices.</h2><p>Shop your favorites and order directly through WhatsApp.</p></div><a href="#shop" class="btn btn-dark">Browse offers →</a></section>
+<section class="about-section" id="about"><div class="about-card"><span class="eyebrow">WHY SHOP WITH US</span><h2>Simple shopping.<br><em>Personal service.</em></h2><p>We bring together stylish clothing and footwear so you can browse easily and order with a quick WhatsApp conversation.</p><div class="about-points"><span>01 <b>Easy browsing</b></span><span>02 <b>Quick ordering</b></span><span>03 <b>Personal support</b></span></div></div></section>
+</main>
+<footer><div class="brand"><span class="brand-mark">UT</span><span>Urban Threads</span></div><p>Style for every day, every move.</p><span>© 2026 Urban Threads</span></footer>
+<div class="modal-backdrop" id="modalBackdrop"><div class="modal" id="modal"></div></div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+import { getFirestore, collection, onSnapshot, addDoc, doc, updateDoc, deleteDoc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-storage.js";
+
+window.firebaseModules = { initializeApp, getFirestore, collection, onSnapshot, addDoc, doc, updateDoc, deleteDoc, setDoc, getDoc, getStorage, ref, uploadBytes, getDownloadURL };
+window.firebaseConfig = {
+  apiKey: "AIzaSyCPFIAE_0fFcfJXazlPHj7EGPIs5jQLxY0",
+  authDomain: "urban-threads-ae742.firebaseapp.com",
+  projectId: "urban-threads-ae742",
+  storageBucket: "urban-threads-ae742.firebasestorage.app",
+  messagingSenderId: "264073153375",
+  appId: "1:264073153375:web:bbeba829ce1315b6d504ea",
+  measurementId: "G-MY4KF0L8HM"
+};
+window.firebaseReady = true; window.dispatchEvent(new Event("firebase-ready"));
+</script>
+
+<script>
+const defaultProducts=[
+{id:1,name:"Classic Linen Shirt",category:"Men's Wear",price:1299,old:1599,emoji:"👔",bg:"#d8e3dc",desc:"Relaxed fit • Premium linen blend"},
+{id:2,name:"Performance Training Set",category:"Sportswear",price:1899,old:2299,emoji:"🏃",bg:"#dce6ef",desc:"Lightweight • Breathable • Flexible"},
+{id:3,name:"Elegant Festive Saree",category:"Sarees",price:2499,old:2999,emoji:"🥻",bg:"#f1d9d0",desc:"Soft drape • Statement border"},
+{id:4,name:"Everyday Runner",category:"Shoes",price:2199,old:2799,emoji:"👟",bg:"#eee2c6",desc:"Cushioned comfort • Daily wear"},
+{id:5,name:"Essential Polo",category:"Men's Wear",price:899,old:1199,emoji:"👕",bg:"#e5e0d8",desc:"Smart casual • Easy fit"},
+{id:6,name:"Active Sports Shoes",category:"Sportswear",price:2499,old:2999,emoji:"🥾",bg:"#d9e2e8",desc:"Grip sole • Training ready"},
+{id:7,name:"Classic Silk Saree",category:"Sarees",price:3299,old:3899,emoji:"🌸",bg:"#ead7c9",desc:"Elegant finish • Occasion wear"},
+{id:8,name:"Urban Street Sneakers",category:"Shoes",price:1999,old:2499,emoji:"👞",bg:"#e8e1d5",desc:"Clean silhouette • All-day comfort"}];
+let products=JSON.parse(localStorage.getItem("ut_products")||"null")||defaultProducts;
+
+let cart=JSON.parse(localStorage.getItem("ut_cart")||"[]"),currentFilter="All";
+let cloudDB=null, cloudStorage=null, cloudMode=false, cloudUnsubscribe=null;
+const CLOUD_PRODUCTS_COLLECTION="products";
+function cloudConfigured(){
+  const c=window.firebaseConfig||{};
+  return c.apiKey && !c.apiKey.startsWith("PASTE_") && c.projectId && !c.projectId.startsWith("PASTE_");
+}
+function initCloud(){
+  if(!cloudConfigured()) return;
+  if(!window.firebaseModules){ window.addEventListener("firebase-ready", initCloud, {once:true}); return; }
+  try{
+    const {initializeApp,getFirestore,getStorage}=window.firebaseModules;
+    const app=initializeApp(window.firebaseConfig);
+    cloudDB=getFirestore(app);
+    cloudStorage=getStorage(app);
+    cloudMode=true;
+    cloudUnsubscribe=window.firebaseModules.onSnapshot(
+      window.firebaseModules.collection(cloudDB,CLOUD_PRODUCTS_COLLECTION),
+      snap=>{
+        products=snap.docs.map(d=>({id:d.id,...d.data()}));
+        if(!products.length){ seedCloudProducts(); return; }
+        renderProducts(); updateCartCount();
+        if(document.getElementById("modalBackdrop").classList.contains("open")){
+          const u=JSON.parse(localStorage.getItem("ut_user")||"null"); if(u&&u.role==="admin") showAdmin();
+        }
+      },
+      err=>{ console.warn("Cloud sync error:",err); cloudMode=false; toast("Firebase connected but Firestore rules/setup need attention"); if(document.getElementById("modalBackdrop").classList.contains("open")) showAdmin(); }
+    );
+  }catch(e){ console.warn("Cloud setup error:",e); cloudMode=false; }
+}
+async function seedCloudProducts(){
+  if(!cloudMode) return;
+  const {collection,addDoc}=window.firebaseModules;
+  for(const p of defaultProducts){
+    const {id,...data}=p;
+    await addDoc(collection(cloudDB,CLOUD_PRODUCTS_COLLECTION),data);
+  }
+}
+async function cloudAddProduct(data){
+  const {collection,addDoc}=window.firebaseModules;
+  await addDoc(collection(cloudDB,CLOUD_PRODUCTS_COLLECTION),data);
+}
+async function cloudDeleteProduct(id){
+  const {doc,deleteDoc}=window.firebaseModules;
+  await deleteDoc(doc(cloudDB,CLOUD_PRODUCTS_COLLECTION,String(id)));
+}
+async function cloudUpdateProduct(id,data){
+  const {doc,updateDoc}=window.firebaseModules;
+  await updateDoc(doc(cloudDB,CLOUD_PRODUCTS_COLLECTION,String(id)),data);
+}
+
+const WHATSAPP_NUMBER="919284283849"; // CHANGE THIS to your WhatsApp number, e.g. 919876543210
+const grid=document.getElementById("productGrid"),backdrop=document.getElementById("modalBackdrop"),modal=document.getElementById("modal");
+function money(n){return "₹"+n.toLocaleString("en-IN")}
+function save(){if(!cloudMode)localStorage.setItem("ut_products",JSON.stringify(products));localStorage.setItem("ut_cart",JSON.stringify(cart));updateCartCount()}
+function renderProducts(){let list=products.filter(p=>currentFilter==="All"||p.category===currentFilter);grid.innerHTML=list.map(p=>`<article class="product-card"><div class="product-image" style="background:${p.bg}">${p.image?`<img src="${p.image}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover">`:`<span>${p.emoji}</span>`}<small class="product-tag">${p.category}</small></div><div class="product-info"><h3>${p.name}</h3><p>${p.desc}</p><div><span class="price">${money(p.price)}</span><span class="old-price">${money(p.old)}</span></div><div class="product-actions"><button class="small-btn" data-detail-id="${p.id}">Details</button><button class="small-btn primary" ${p.stock===0?'disabled':''} data-cart-id="${p.id}">${p.stock===0?'Out of stock':'Add to cart'}</button></div></div></article>`).join("")}
+function updateCartCount(){document.getElementById("cartCount").textContent=cart.reduce((a,b)=>a+b.qty,0)}
+function openModal(html){modal.innerHTML=html;backdrop.classList.add("open")}function closeModal(){backdrop.classList.remove("open")}backdrop.onclick=e=>{if(e.target===backdrop)closeModal()}
+function toast(msg){let t=document.createElement("div");t.textContent=msg;t.style="position:fixed;bottom:25px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:12px 18px;border-radius:10px;z-index:50;font-size:13px";document.body.appendChild(t);setTimeout(()=>t.remove(),1800)}
+function showProduct(id){let p=products.find(x=>String(x.id)===String(id));openModal(`<button class="close" onclick="closeModal()">×</button><div class="product-image" style="background:${p.bg};height:220px;border-radius:15px"><span>${p.emoji}</span></div><h2>${p.name}</h2><p>${p.desc}</p><h3>${money(p.price)}</h3><div class="modal-actions"><button class="btn btn-primary" onclick="addToCart(${p.id});closeModal()">Add to Cart</button><button class="btn" style="background:#25D366;color:white" data-wa-order="${p.id}">Order on WhatsApp</button></div>`)}
+function addToCart(id){id=String(id);let p=products.find(x=>String(x.id)===String(id));if(!p||p.stock===0){toast("Out of stock");return}let item=cart.find(x=>String(x.id)===String(id));if(item&&p.stock&&item.qty>=p.stock){toast("Stock limit reached");return}item?item.qty++:cart.push({id:String(id),qty:1});save();toast("Added to cart")}
+function removeFromCart(id){cart=cart.filter(x=>String(x.id)!==String(id));save();updateCartCount();showCart()}
+function showCart(){let total=0;let items=cart.map(i=>{let p=products.find(x=>String(x.id)===String(i.id));total+=p.price*i.qty;return `<div class="cart-item"><div><b>${p.name}</b><br><small>${i.qty} × ${money(p.price)}</small></div><button class="small-btn danger" data-remove-id="${p.id}">Remove</button></div>`}).join("");openModal(`<button class="close" onclick="closeModal()">×</button><h2>Your Cart</h2>${items||'<div class="empty">Your cart is empty.</div>'}${items?`<h3>Total: ${money(total)}</h3><button class="btn btn-primary" onclick="checkoutWhatsApp()">Order Entire Cart on WhatsApp</button>`:""}`)}
+function orderWhatsApp(id){let p=products.find(x=>String(x.id)===String(id));window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(`Hello! I want to order:\n${p.name}\nPrice: ${money(p.price)}\nCategory: ${p.category}`)}`,"_blank")}
+function checkoutWhatsApp(){let lines=cart.map(i=>{let p=products.find(x=>String(x.id)===String(i.id));return `${p.name} x${i.qty} - ${money(p.price*i.qty)}`}).join("\n");window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hello! I want to place an order:\n"+lines)}`,"_blank")}
+function showAuth(){
+openModal(`<button class="close" onclick="closeModal()">×</button>
+<h2>Choose account type</h2>
+<div class="modal-actions" style="margin-bottom:18px">
+<button class="btn btn-primary" onclick="showCustomerAuth()">👤 Customer</button>
+<button class="btn" style="background:#d8e3dc" onclick="showAdminLogin()">👑 Admin</button>
+</div>
+<p style="font-size:12px;color:var(--muted)">Customers can shop and order. Admins can manage products and orders.</p>`);
+}
+function showCustomerAuth(){
+openModal(`<button class="close" onclick="closeModal()">×</button>
+<h2>Customer Login / Sign up</h2>
+<form class="form" onsubmit="event.preventDefault();saveCustomer(this)">
+<label>Name<input name="name" required placeholder="Your name"></label>
+<label>Email or phone<input name="email" required placeholder="you@example.com"></label>
+<label>Password<input name="password" type="password" required placeholder="••••••••"></label>
+<button class="btn btn-primary">Login / Sign up</button>
+</form>
+<p style="font-size:12px;color:var(--muted)">Your account lets you shop, use your cart, and place WhatsApp orders.</p>`);
+}
+function saveCustomer(f){
+localStorage.setItem("ut_user",JSON.stringify({role:"customer",name:f.name.value,email:f.email.value}));
+toast("Customer account saved");closeModal();updateRoleUI();
+}
+function showAdminLogin(){
+openModal(`<button class="close" onclick="closeModal()">×</button>
+<h2>Admin Login</h2>
+<form class="form" onsubmit="event.preventDefault();adminLogin(this)">
+<label>Admin username<input name="username" required placeholder="admin"></label>
+<label>Admin password<input name="password" type="password" required placeholder="••••••••"></label>
+<button class="btn btn-primary">Login as Admin</button>
+</form>
+<p style="font-size:12px;color:var(--muted)">Demo credentials: <b>admin</b> / <b>urban123</b></p>`);
+}
+function adminLogin(f){
+if(f.username.value==="admin" && f.password.value==="urban123"){
+localStorage.setItem("ut_user",JSON.stringify({role:"admin",name:"Administrator",email:"admin"}));
+toast("Admin login successful");closeModal();updateRoleUI();showAdmin();
+}else toast("Invalid admin username or password");
+}
+function showProfile(){
+let u=JSON.parse(localStorage.getItem("ut_user")||"null");
+if(!u)return showAuth();
+if(u.role==="admin"){
+openModal(`<button class="close" onclick="closeModal()">×</button>
+<h2>Admin Account</h2>
+<p><b>Role:</b> Administrator</p>
+<p><b>Username:</b> ${u.email}</p>
+<div class="modal-actions">
+<button class="btn btn-primary" onclick="closeModal();showAdmin()">Open Admin Dashboard</button>
+<button class="btn" onclick="localStorage.removeItem('ut_user');closeModal();updateRoleUI()">Log out</button>
+</div>`);
+}else{
+openModal(`<button class="close" onclick="closeModal()">×</button>
+<h2>Your Profile</h2>
+<p><b>Name:</b> ${u.name}</p>
+<p><b>Contact:</b> ${u.email}</p>
+<p><b>Account:</b> Customer</p>
+<button class="btn" onclick="localStorage.removeItem('ut_user');closeModal();updateRoleUI()">Log out</button>`);
+}
+}
+function showAdmin(){
+let u=JSON.parse(localStorage.getItem("ut_user")||"null");
+if(!u || u.role!=="admin"){showAdminLogin();return}
+openModal(`<button class="close" onclick="closeModal()">×</button><h2>Admin Dashboard</h2>
+<p style="font-size:12px;color:var(--muted)">☁️ ${cloudMode?"Cloud sync is ON — changes appear on every connected device.":"Cloud sync is OFF — check Firebase setup and Firestore rules."}</p>
+<form class="form" onsubmit="event.preventDefault();addProduct(this)"><div class="admin-grid"><input name="name" required placeholder="Product name"><select name="category"><option>Men's Wear</option><option>Sportswear</option><option>Sarees</option><option>Shoes</option></select><input name="price" type="number" required placeholder="Price"><input name="old" type="number" placeholder="Old price"><input name="stock" type="number" min="0" value="10" placeholder="Stock"><input name="emoji" placeholder="Emoji e.g. 👕"><input name="bg" placeholder="Background #d8e3dc"><input name="photo" type="file" accept="image/*"></div><textarea name="desc" placeholder="Short product details"></textarea><button class="btn btn-primary">＋ Add Product</button></form>
+<div class="admin-products">${products.map(p=>`<div class="admin-row"><span><b>${p.name}</b><br><small>${p.category} • ${money(p.price)} • Stock: ${p.stock??0}</small></span><span style="display:flex;gap:6px"><button class="small-btn" onclick="editProduct('${String(p.id)}')">Edit</button><button class="small-btn danger" onclick="deleteProduct('${String(p.id)}')">Delete</button></span></div>`).join("")}</div>`)}
+function editProduct(id){
+const p=products.find(x=>String(x.id)===String(id)); if(!p)return;
+openModal(`<button class="close" onclick="closeModal()">×</button><h2>Edit Product</h2><form class="form" onsubmit="event.preventDefault();saveEditedProduct('${String(p.id)}',this)"><input name="name" required value="${(p.name||'').replace(/"/g,'&quot;')}"><select name="category"><option ${p.category==="Men's Wear"?'selected':''}>Men's Wear</option><option ${p.category==="Sportswear"?'selected':''}>Sportswear</option><option ${p.category==="Sarees"?'selected':''}>Sarees</option><option ${p.category==="Shoes"?'selected':''}>Shoes</option></select><input name="price" type="number" required value="${p.price}"><input name="old" type="number" value="${p.old||p.price}"><input name="stock" type="number" min="0" value="${p.stock??0}"><input name="emoji" value="${p.emoji||''}"><input name="bg" value="${p.bg||''}"><textarea name="desc">${p.desc||''}</textarea><button class="btn btn-primary">Save Changes</button></form>`)
+}
+async function saveEditedProduct(id,f){
+const data={name:f.name.value,category:f.category.value,price:+f.price.value,old:+f.old.value||+f.price.value,stock:+f.stock.value||0,emoji:f.emoji.value||"🛍️",bg:f.bg.value||"#e8e1d5",desc:f.desc.value||"New arrival"};
+if(cloudMode){await cloudUpdateProduct(id,data);toast("Product updated on every device")}else{let i=products.findIndex(x=>String(x.id)===String(id));if(i>-1)products[i]={...products[i],...data};save();renderProducts();toast("Product updated")}
+showAdmin();
+}
+async function addProduct(f){
+let imageUrl="";
+const file=f.photo.files[0];
+if(cloudMode && file){
+  const {ref,uploadBytes,getDownloadURL}=window.firebaseModules;
+  const storageRef=ref(cloudStorage,"product-images/"+Date.now()+"-"+file.name.replace(/\s+/g,"-"));
+  await uploadBytes(storageRef,file);
+  imageUrl=await getDownloadURL(storageRef);
+}
+const data={
+name:f.name.value,
+category:f.category.value,
+price:+f.price.value,
+old:+f.old.value||+f.price.value,
+stock:+f.stock.value||0,
+emoji:f.emoji.value||"🛍️",
+bg:f.bg.value||"#e8e1d5",
+desc:f.desc.value||"New arrival",
+image:imageUrl
+};
+if(cloudMode){
+  await cloudAddProduct(data);
+  toast("Product added and synced to every device");
+}else{
+  products.unshift({id:Date.now(),...data});
+  save(); renderProducts(); toast("Product added on this device");
+}
+showAdmin();
+}
+async function deleteProduct(id){
+if(cloudMode){await cloudDeleteProduct(id);toast("Product deleted from every device");}
+else{products=products.filter(p=>String(p.id)!==String(id));save();renderProducts();toast("Product deleted");}
+showAdmin();
+}
+document.addEventListener("click",function(e){const detailBtn=e.target.closest("[data-detail-id]");const cartBtn=e.target.closest("[data-cart-id]");const removeBtn=e.target.closest("[data-remove-id]");const waBtn=e.target.closest("[data-wa-order]");if(detailBtn){e.preventDefault();showProduct(detailBtn.dataset.detailId);return;}if(cartBtn&&!cartBtn.disabled){e.preventDefault();addToCart(cartBtn.dataset.cartId);return;}if(removeBtn){e.preventDefault();removeFromCart(removeBtn.dataset.removeId);return;}if(waBtn){e.preventDefault();orderWhatsApp(waBtn.dataset.waOrder);return;}});
+document.querySelectorAll(".filter").forEach(b=>b.onclick=()=>{document.querySelectorAll(".filter").forEach(x=>x.classList.remove("active"));b.classList.add("active");currentFilter=b.dataset.filter;renderProducts()});
+document.querySelectorAll(".category-card").forEach(b=>b.onclick=()=>{currentFilter=b.dataset.category;document.querySelectorAll(".filter").forEach(x=>x.classList.toggle("active",x.dataset.filter===currentFilter));document.getElementById("shop").scrollIntoView({behavior:"smooth"});renderProducts()});
+document.getElementById("themeToggle").onclick=()=>{document.body.classList.toggle("dark");localStorage.setItem("ut_dark",document.body.classList.contains("dark"))};if(localStorage.getItem("ut_dark")==="true")document.body.classList.add("dark");
+document.getElementById("cartBtn").addEventListener("click",e=>{e.preventDefault();showCart();});document.getElementById("profileBtn").onclick=showProfile;
+document.getElementById("adminBtn").onclick=showAdmin;
+function updateRoleUI(){
+let u=JSON.parse(localStorage.getItem("ut_user")||"null");
+document.getElementById("adminBtn").style.display=(u&&u.role==="admin")?"inline-block":"none";
+}document.getElementById("menuBtn").onclick=()=>document.getElementById("mobileMenu").classList.toggle("open");
+document.getElementById("searchBtn").onclick=()=>openModal(`<button class="close" onclick="closeModal()">×</button><h2>Search products</h2><div class="search-box"><input id="searchInput" placeholder="Search shirts, sarees, shoes..."><button class="btn btn-primary" onclick="searchProducts()">Search</button></div><div id="searchResults"></div>`);
+function searchProducts(){let q=document.getElementById("searchInput").value.toLowerCase();let results=products.filter(p=>(p.name+" "+p.category+" "+p.desc).toLowerCase().includes(q));document.getElementById("searchResults").innerHTML=results.map(p=>`<div class="cart-item"><span>${p.emoji} <b>${p.name}</b><br><small>${p.category} • ${money(p.price)}</small></span><button class="small-btn primary" data-cart-id="${p.id}">Add</button></div>`).join("")||'<div class="empty">No products found.</div>'}
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeModal()});renderProducts();updateCartCount();updateRoleUI();initCloud();window.addEventListener("firebase-ready",initCloud,{once:true});
+</script>
+</body>
+</html>
+<!-- CLOUD SYNC SETUP:
+1. Create a Firebase project.
+2. Enable Firestore Database and Storage.
+3. Firebase configuration is already inserted for the Urban Threads project.
+4. Set Firestore rules so only your authenticated admin can write products.
+5. Set Storage rules so only your authenticated admin can upload product images.
+This cloud layer makes product add/delete changes sync across devices.
+-->
